@@ -125,13 +125,13 @@ server <- function(input, output,session) {
       
       text_body = if (input$selected_column_MP == "LTQ95"){
         paste0(
-          "Research⁺ suggests that if the UK warms by 2°C average river flows in your constituency could decrease by  ", constituency_statistics$Q50, "????%.
-        <p><p>
-        Your local rivers are modelled to experience an additional ", constituency_statistics$LTQ95, " days of very low flow per year. Models show that average river flows will decrease across the UK, which could impact water availability national.
-        <p><p>
-        Reduced river flows could have broad and direct consequences:
-        <p>
-        <ul>", 
+          "Research⁺ suggests that if the UK warms by 2°C average river flows in your constituency could decrease by  ", round(constituency_statistics$Q50,0), "%.
+          <p><p>
+          Your local rivers are modelled to experience an additional ", round(constituency_statistics$LTQ95,0), " days of very low flow per year. Models show that average river flows will decrease across the UK, which could impact water availability national.
+          <p><p>
+          Reduced river flows could have broad and direct consequences:
+          <p>
+          <ul>", 
           paste0(
             "<li>", 
             c("Water scarcity, causing shortages for drinking, agriculture, industry, energy production, and other essential uses.", 
@@ -145,12 +145,12 @@ server <- function(input, output,session) {
       } else if (input$selected_column_MP == "X1in10Flood") {
         paste0("Models of the rivers in your constituency show that high flows could ",
                constituency_statistics[["1in10D"]],
-               " by ", constituency_statistics$X1in10yrF, "%. And, ",
+               " by ", round(constituency_statistics$X1in10yrF,0), "%. And, ",
                if(constituency_statistics$Region_nam == 'Midlands'){
                  paste0('in the ', constituency_statistics$Region_nam)
                } else{
                  paste0('in ', constituency_statistics$Region_nam)
-               }, " as a whole, that high river flows could ", constituency_statistics$Reg_1in10D, " by ", constituency_statistics$Reg1in10yr, 
+               }, " as a whole, that high river flows could ", round(constituency_statistics$Reg_1in10D,0), "% by ", constituency_statistics$Reg1in10yr, 
                ". Storm rainfall in your area could increase by ", constituency_statistics$RainUplift, "% by 2050* causing increased rapid-onset surface water flooding.
       <p><p>
       Changing rainfall patterns and increased flood risk are causing additional property and infrastructure damage, economic losses, and disruption to crucial services and agriculture, as well as environmental damage and potential loss of life.")
